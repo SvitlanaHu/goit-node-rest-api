@@ -121,6 +121,9 @@ dist
 
 # Stores VSCode versions used for testing VSCode extensions
 .vscode-test
+.idea
+.vscode
+.DS_Store
 
 # yarn v2
 .yarn/cache
