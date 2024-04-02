@@ -2,7 +2,7 @@ import { promises as fs } from "fs";
 import path from "path";
 import { nanoid } from "nanoid";
 
-const contactsPath = path.join("data", "contacts.json");
+const contactsPath = path.resolve("db", "contacts.json");
 
 export async function listContacts() {
     const result = await fs.readFile(contactsPath);
@@ -37,4 +37,17 @@ export async function addContact(name, email, phone) {
     contacts.push(newContact);
     await fs.writeFile(contactsPath, JSON.stringify(contacts, null, 2));
     return newContact;
+}
+
+export async function updateContact(id, body) {
+    const contacts = await listContacts();
+
+    const index = contacts.findIndex((contact) => contact.id === id);
+
+    if (index === -1) return null;
+
+    contacts[index] = { ...contacts[index], ...body };
+    await fs.writeFile(contactsPath, JSON.stringify(contacts, null, 2));
+
+    return contacts[index];
 }

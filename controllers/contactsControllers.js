@@ -1,4 +1,9 @@
-import contactsService from "../services/contactsServices.js";
+import * as contactsService from "../services/contactsServices.js";
+import {
+    createContactSchema,
+    updateContactSchema,
+} from "../schemas/contactsSchemas.js";
+import HttpError from "../helpers/HttpError.js";
 
 export const getAllContacts = (req, res) => { };
 
