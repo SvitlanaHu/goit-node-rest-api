@@ -9,6 +9,7 @@ export const createContactSchema = Joi.object({
         })
         .required(),
     phone: Joi.number().required(),
+    favorite: Joi.boolean(),
 });
 
 export const updateContactSchema = Joi.object({
@@ -18,4 +19,9 @@ export const updateContactSchema = Joi.object({
         tlds: { allow: ["com", "net", "ua"] },
     }),
     phone: Joi.number(),
+    favorite: Joi.boolean(),
 }).min({ limit: 1 });
+
+export const updateStatusSchema = Joi.object({
+    favorite: Joi.boolean().required(),
+});
