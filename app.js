@@ -23,10 +23,10 @@ app.use((err, req, res, next) => {
     res.status(status).json({ message });
 });
 
-const { DB_URL, PORT } = process.env;
+const { MONGODB_URL, PORT } = process.env;
 
 mongoose
-    .connect(DB_URL)
+    .connect(MONGODB_URL)
     .then(() => {
         app.listen(PORT, () => {
             console.log(`Database connection successful`);
