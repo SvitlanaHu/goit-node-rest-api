@@ -13,8 +13,11 @@ import {
     updateContactSchema,
 } from "../schemas/contactsSchemas.js";
 import validateBody from "../helpers/validateBody.js";
+import { authorize } from "../middlewares/authorize.js";
 
 const contactsRouter = express.Router();
+
+contactsRouter.use(authorize);
 
 contactsRouter.get("/", getAllContacts);
 
