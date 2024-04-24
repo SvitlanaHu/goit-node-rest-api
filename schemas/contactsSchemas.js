@@ -20,7 +20,7 @@ export const updateContactSchema = Joi.object({
     }),
     phone: Joi.number(),
     favorite: Joi.boolean(),
-}).min({ limit: 1 });
+});
 
 export const updateStatusSchema = Joi.object({
     favorite: Joi.boolean().required(),

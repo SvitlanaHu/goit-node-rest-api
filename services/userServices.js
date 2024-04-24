@@ -13,3 +13,7 @@ export const setToken = (id, token = "") =>
 export const findUser = (filter) => User.findOne(filter);
 
 export const findUserById = (id) => User.findById(id);
+
+export const updateAvatar = (id, avatarURL) => {
+    return User.findByIdAndUpdate(id, { avatarURL });
+};
