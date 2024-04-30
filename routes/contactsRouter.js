@@ -7,7 +7,7 @@ import {
     updateContact,
     updateStatusContact,
 } from "../controllers/contactsControllers.js";
-import isValidId from "../middlewares/isValidId.js";
+import { isValidId } from "../middlewares/isValidId.js";
 import {
     createContactSchema,
     updateContactSchema,

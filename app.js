@@ -5,7 +5,7 @@ import cors from "cors";
 import contactsRouter from "./routes/contactsRouter.js";
 import mongoose from "mongoose";
 import "dotenv/config";
-import authRouter from "./routes/userRouter.js"
+import userRouter from "./routes/userRouter.js"
 
 const app = express();
 
@@ -14,7 +14,7 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static("public"));
 
-app.use("/api/users", authRouter)
+app.use("/api/users", userRouter)
 app.use("/api/contacts", contactsRouter);
 
 app.use((_, res) => {
@@ -26,7 +26,7 @@ app.use((err, req, res, next) => {
     res.status(status).json({ message });
 });
 
-const { MONGODB_URL, PORT } = process.env;
+const { MONGODB_URL, PORT = 4005 } = process.env;
 
 mongoose
     .connect(MONGODB_URL)
