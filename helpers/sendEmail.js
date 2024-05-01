@@ -1,19 +1,19 @@
 import nodemailer from "nodemailer";
 
-const { myEMAIL, myPASSWORD } = process.env;
+const { MY_EMAIL, MY_PASSWORD } = process.env;
+
+// Створюємо транспорт для відправки email
+const transporter = nodemailer.createTransport({
+    service: "Gmail",
+    auth: {
+        user: MY_EMAIL,
+        pass: MY_PASSWORD,
+    },
+});
 
 // Функція для відправки email
 export const sendEmail = async (to, subject, text) => {
     try {
-        // Створюємо транспорт для відправки email
-        const transporter = nodemailer.createTransport({
-            service: "Gmail",
-            auth: {
-                user: myEMAIL,
-                pass: myPASSWORD,
-            },
-        });
-
         // Налаштовуємо дані для відправки email
         const mailOptions = {
             from: myEMAIL, // Ваш email
