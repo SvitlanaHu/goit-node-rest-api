@@ -1,9 +1,18 @@
 import jwt from "jsonwebtoken";
 import "dotenv/config";
+import { isValidObjectId } from "mongoose";
 import { findUserById } from "../services/userServices.js";
 import HttpError from "../helpers/HttpError.js";
 
 const { JWT_SECRET } = process.env;
+
+export const isValidId = (req, res, next) => {
+    const { id } = req.params;
+    if (!isValidObjectId(id)) {
+        return next(HttpError(404, `${id} is not valid id`));
+    }
+    next();
+};
 
 export const authorize = async (req, res, next) => {
     const { authorization } = req.headers;

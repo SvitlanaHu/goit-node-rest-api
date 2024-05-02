@@ -7,13 +7,12 @@ import {
     updateContact,
     updateStatusContact,
 } from "../controllers/contactsControllers.js";
-import { isValidId } from "../middlewares/isValidId.js";
+import { isValidId, authorize } from "../middlewares/authorizeAndValidId.js";
 import {
     createContactSchema,
     updateContactSchema,
 } from "../schemas/contactsSchemas.js";
 import validateBody from "../helpers/validateBody.js";
-import { authorize } from "../middlewares/authorize.js";
 
 const contactsRouter = express.Router();
 

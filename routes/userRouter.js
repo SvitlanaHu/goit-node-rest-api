@@ -10,9 +10,8 @@ import {
     resendVerify,
 } from "../controllers/userController.js";
 
-import { authorize } from "../middlewares/authorize.js";
-import { uploadAvatar } from "../middlewares/uploadAvatar.js";
-import { updateBody } from "../middlewares/updateBody.js";
+import { authorize } from "../middlewares/authorizeAndValidId.js";
+import { updateBody, uploadAvatar } from "../middlewares/updateBody.js";
 
 const userRouter = express.Router();
 
