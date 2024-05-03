@@ -25,7 +25,7 @@ export const sendEmail = async (to, subject, text) => {
         // Відправляємо email
         await transporter.sendMail(mailOptions);
     } catch (error) {
-        next(error);
+        throw error; // Викидаємо помилку далі для обробки
     }
 };
 
